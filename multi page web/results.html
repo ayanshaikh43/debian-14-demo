@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Snack Goblin — Official Snack Report</title>
+<style>
+:root{--ink:#241b35;--pink:#ff5c9a;--yellow:#ffe66d;--mint:#8ff0c6;--cream:#fff8e8}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:radial-gradient(circle at 12% 85%,#ffb7d5 0 9%,transparent 10%),linear-gradient(135deg,#b8f7e4,#e3c9ff);display:grid;place-items:center;padding:24px}.card{width:min(700px,100%);background:var(--cream);border:4px solid var(--ink);border-radius:28px;padding:clamp(24px,5vw,48px);box-shadow:10px 10px 0 var(--ink);text-align:center}.emoji{font-size:6rem;line-height:1.1;animation:wiggle .7s ease-in-out infinite alternate}@keyframes wiggle{to{transform:rotate(8deg) scale(1.05)}}h1{font-size:clamp(2.3rem,7vw,4.2rem);line-height:.98;letter-spacing:-.05em;margin:18px 0}p{font-size:1.12rem;line-height:1.6}.score{display:inline-block;font-size:3.5rem;font-weight:1000;background:var(--yellow);border:3px solid var(--ink);border-radius:18px;padding:8px 24px;box-shadow:5px 5px 0 var(--ink);margin:8px}.rank{font-size:1.25rem;font-weight:900;margin:16px auto}.btn{display:inline-block;text-decoration:none;color:var(--ink);background:var(--pink);border:3px solid var(--ink);border-radius:14px;padding:13px 20px;font-weight:950;box-shadow:4px 4px 0 var(--ink);margin:7px}.btn.secondary{background:var(--mint)}.note{opacity:.72;font-size:.9rem}
+</style></head>
+<body><main class="card">
+<div class="emoji" id="emoji">🍕</div><h1 id="title">THE SNACK REPORT</h1>
+<p id="message">Calculating the crumbs...</p>
+<div class="score"><span id="score">0</span> 🍕</div>
+<div class="rank" id="rank"></div>
+<p id="bonkline"></p>
+<a class="btn" href="game.html">PLAY AGAIN ↻</a><a class="btn secondary" href="index.html">BACK TO GOBLIN HQ</a>
+<p class="note">Officially unofficial results. No broccoli was emotionally prepared for this.</p>
+</main><script>
+const score=Number(localStorage.getItem('snackGoblinScore')||0),bonks=Number(localStorage.getItem('snackGoblinBonks')||0),reason=localStorage.getItem('snackGoblinReason')||'time';
+document.getElementById('score').textContent=score;
+document.getElementById('bonkline').textContent=`Broccoli bonks: ${bonks}/3. ${reason==='bonked'?'You were defeated by a vegetable. Please take a moment.':'The broccoli is filing a complaint.'}`;
+let title,message,rank,emoji;
+if(score>=25){title='SNACK SUPREME';message='You have become one with the crumbs. Legends will sing of your greasy little hands.';rank='🏆 Rank: CEO of Snacks';emoji='👑'}
+else if(score>=15){title='CRUMB CRIMINAL';message='An elite heist! The snack drawer has requested witness protection.';rank='🥇 Rank: Highly Snackable';emoji='🕶️'}
+else if(score>=7){title='PRETTY GOBLIN';message='Not bad! You have secured a respectable pile of emergency munchies.';rank='🥈 Rank: Snack Intern';emoji='😈'}
+else{title='TINY TASTE TESTER';message='A humble haul. Maybe you got distracted by a shiny wrapper.';rank='🥉 Rank: Crumb Apprentice';emoji='🥹'}
+document.getElementById('title').textContent=title;document.getElementById('message').textContent=message;document.getElementById('rank').textContent=rank;document.getElementById('emoji').textContent=emoji;
+</script></body></html>
